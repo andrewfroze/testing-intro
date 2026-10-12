@@ -1,7 +1,3 @@
-function notImplemented() {
-  throw new Error('Корзина ещё не реализована. Сначала прочитайте тесты.');
-}
-
 function addToCart(array, item, quantity) {
   if (quantity < 1) {
     throw new RangeError("Quantity could not be negative or zero value");
