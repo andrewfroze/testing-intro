@@ -20,7 +20,20 @@ function addToCart(array, item, quantity) {
   return array;
 }
 
-function changeQuantity() { return notImplemented(); }
+function changeQuantity(cart, id, quantity) {
+  if (quantity < 1) {
+    throw new RangeError("Quantity could not be negative or zero value");
+  }
+
+  const matchedItems = cart.filter((cartItem) => cartItem.id === id);
+  if (matchedItems.length > 0) {
+    if (matchedItems[0].stock < quantity) {
+      throw new RangeError("Quantity could not be greater then stock value");
+    }
+    matchedItems[0].quantity = quantity;
+  }
+  return cart; 
+}
 function removeFromCart() { return notImplemented(); }
 function calculateCartSubtotal() { return notImplemented(); }
 function calculateOrderTotal() { return notImplemented(); }
